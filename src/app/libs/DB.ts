@@ -19,6 +19,13 @@ export interface User {
   role: "ADMIN" | "SUPER_ADMIN";
 }
 
+export interface Database {
+  rooms: Room[],
+  messages: Message[],
+  user: User[],
+}
+
+
 const originalDB = {
   rooms: [
     {
@@ -53,6 +60,42 @@ const originalDB = {
   ],
 };
 
+export let DB1 ={
+  rooms: [
+    {
+      roomId: "okhkUzffzCGMqtfC1uv6x",
+      roomName: "CPE & ISNE Chitchat",
+    },
+    {
+      roomId: "HhVrDzdfsW-dS0YGOzrV3",
+      roomName: "261207 Tutorial",
+    },
+  ],
+  messages: [
+    {
+      roomId: "okhkUzffzCGMqtfC1uv6x",
+      messageId: "Yi4K5qb-K8iMTgq_zwo0_",
+      messageText: "Hi bro!",
+    },
+    {
+      roomId: "okhkUzffzCGMqtfC1uv6x",
+      messageId: "f8rM7yKv7FRLokgwU7wfg",
+      messageText: "Hi everyone",
+    },
+    {
+      roomId: "HhVrDzdfsW-dS0YGOzrV3",
+      messageId: "mBE0AghdK3uwb_yvX9n35",
+      messageText: "Can anyone teach me RESTFul API?",
+    },
+  ],
+  users: [
+    { username: "user1", password: "1234", role: "ADMIN" },
+    { username: "user2", password: "5678", role: "SUPER_ADMIN" },
+  ],
+}
+
+
+
 const onProduction = process.env.NODE_ENV === "production";
 
 const adapter = onProduction
@@ -63,7 +106,7 @@ export let DB = onProduction ? _.cloneDeep(originalDB) : lowDB.data;
 
 export function resetDB() {
   if (onProduction) {
-    DB = _.cloneDeep(originalDB);
+    DB1 = _.cloneDeep(originalDB);
   } else {
     lowDB = new LowSync(adapter, originalDB);
     DB = lowDB.data;
