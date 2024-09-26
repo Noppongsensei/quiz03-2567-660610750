@@ -16,7 +16,7 @@ export const GET = async (request: NextRequest) => {
    );
 };
   }
-  ``
+
 export const POST = async (request: NextRequest) => {
   readDB();
 
@@ -41,7 +41,7 @@ export const POST = async (request: NextRequest) => {
   });
 };
 
-export const DELETE = async (request: NextRequest) => {
+export const DELETE = async () => {
   const payload = checkToken();
 
   if(!payload){

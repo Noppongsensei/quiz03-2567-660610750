@@ -23,7 +23,7 @@ export const GET = async (request:NextRequest) => {
 
 export const POST = async (request: NextRequest) => {
   const payload = checkToken();
-  const room1 = request.nextUrl.searchParams.get("rooms");
+  
   const body = await request.json();
   if(!payload){
     return NextResponse.json(
